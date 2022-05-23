@@ -1,7 +1,9 @@
-
+// MARK: - Importing framewroks
 import Foundation
 
+// MARK: - Structures
 struct StoreItem: Codable, Hashable {
+    // MARK: - Properties
     let name: String
     let artist: String
     var kind: String
@@ -10,6 +12,7 @@ struct StoreItem: Codable, Hashable {
     let trackId: Int?
     let collectionId: Int?
     
+    // MARK: - Enumerations
     enum CodingKeys: String, CodingKey {
         case name = "trackName"
         case artist = "artistName"
@@ -25,6 +28,7 @@ struct StoreItem: Codable, Hashable {
         case collectionName = "collectionName"
     }
     
+    // MARK: - Initialization
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
@@ -39,8 +43,4 @@ struct StoreItem: Codable, Hashable {
         self.name = (try? container.decode(String.self, forKey: .name)) ?? (try? additionalContainer.decode(String.self, forKey: .collectionName)) ?? "--"
         self.description = (try? container.decode(String.self, forKey: .description)) ?? (try? additionalContainer.decode(String.self, forKey: .description)) ?? "--"
     }
-}
-
-struct SearchResponse: Codable {
-    let results: [StoreItem]
 }

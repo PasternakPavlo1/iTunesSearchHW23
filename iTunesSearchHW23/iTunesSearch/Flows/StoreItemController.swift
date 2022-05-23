@@ -1,13 +1,15 @@
-
+// MARK: - Importing framewroks
 import Foundation
 import UIKit
 
+// MARK: - Classes
 class StoreItemController {
     enum StoreItemError: Error, LocalizedError {
         case itemsNotFound
         case imageDataMissing
     }
     
+    // MARK: - Methods
     func fetchItems(matching query: [String: String]) async throws -> [StoreItem] {
         var urlComponents = URLComponents(string: "https://itunes.apple.com/search")!
         urlComponents.queryItems = query.map { URLQueryItem(name: $0.key, value: $0.value) }

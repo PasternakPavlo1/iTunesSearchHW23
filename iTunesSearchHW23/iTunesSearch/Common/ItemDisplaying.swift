@@ -1,12 +1,14 @@
-
+// MARK: - Importing framewroks
 import UIKit
 
+// MARK: - Protocols
 protocol ItemDisplaying {
     var itemImageView: UIImageView! { get set }
     var titleLabel: UILabel! { get set }
     var detailLabel: UILabel! { get set }
 }
 
+// MARK: - Extensions
 @MainActor
 extension ItemDisplaying {
     func configure(for item: StoreItem, storeItemController: StoreItemController) async {
